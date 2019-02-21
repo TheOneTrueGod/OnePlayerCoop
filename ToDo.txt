@@ -1,0 +1,138 @@
+Make shield look more shieldy
+
+Level Editor
+	- When in block mode, preview the currently selected tile at the mouse position.
+	- A help screen when the user holds F1.
+		-Might be a good idea to do this for the actual game too.
+
+Fog of war mode -- Can only see enemy units if you can actually see them.
+**MAYBE**An AI type that automatically searches 'hot spots', defined in the level file.  They'll walk around to different ones and see what they can find.
+**MAYBE**When the enemy is finished 'investigating', it should run back to a guard room to alert a bunch of the 'hot spot' guards.
+**MAYBE**Hoffman encode the level files
+
+When investigating a square that the player has run away from, move one extra square so that you aren't half-staring at a corner when trying to find the player...
+
+Make a way to select 'no unit' when selecting your controlled unit.
+Make it so that the 'spawners' aren't tiles.
+
+An Enemy spawner -- something that will create enemy units every once in a while.
+
+Scrolling camera
+	- Make stuff not draw itself if it is off camera.
+
+Cache commonly used A* paths (eg. patrol paths)
+When a unit dies on a trap panel square, alert the trap that the unit has died on it.
+Traps
+	Boulder Trap (Think dungeon keeper)
+	Arrow slits (Can be shot through one-way)
+	Dart trap (Shoots straight ahead)
+	Moving Floors
+Switches
+	Anyone can step on it
+	One you have to shoot / attack / break
+
+A square that can be shot through, but not moved through.
+
+After 3 alerts, the enemy should be permanantly alerted.
+Have enemies investigate noises they hear but can't see. (If it isn't too slow.)
+
+A Win Condition
+Need a way to communicate objectives in the level definition.
+Win Conditions:
+	Kill target(s)
+	Get to point
+	Get treasure!
+
+Units:
+Civilian -- All enemy units always attack civilians first.
+Knight -- Swordsman with more health but much slower movement
+Juggernaut -- Good health, can't attack, slow move, takes extra damage when attacked from behind.
+Thief -- Enemy cannot hear you.  Only has melee attack.
+Assasin -- Enemy cannot hear you.  Has short ranged attack.
+Barbarian -- High speed, melee only, low health.
+
+
+Tilesets:
+A guard post indicator.
+
+--BRAINSTORMED STUFF--
+Lighting and stealth based on it
+Slow down a unit based on damage taken?
+Enemies
+	Sentry Enemy unit.
+	Enemy that teleports (and a way to screw with that teleportation)
+	Enemy that comes back to life
+Potential Puzzle idea:  Button puzzle
+Teleportation Squares
+Potential Weapons that don't have a unit to go with them yet:
+	Explosive that can destroy walls
+	Disguise -- 
+	Flashbang -- Alerts them to a point and deafens them if they're too close
+	Hypnotist -- Target unit stops attacking and will not attack or move for a short while.
+	Ghost or something.  Sacrifices itself to possess a unit.
+	Cultist or something along those lines.  Melee only, enemies attack only it, and when it kills an enemy unit it transforms into something better.
+
+---DONE---
+When an enemy is alerted, they should alert all nearby units.  Alerted units have higher listen range, move slightly faster, dilly dally slightly less time, and generally look around a lot more.
+Add a new 'ai move' type -- walking.  When this is on, they are walking towards a target point.  Use A* to find a path there, and then follow it.
+
+Add a bit of a random offset to bullets so they don't look like perfect laser-accuracy shots.
+
+Entry portals -- spots for your units to teleport in to the map at.
+Make it so that player units don't exist on the map until they 'port' in.
+Exit Portal(s) -- places to get to for victory.
+
+Way to tell what player units are available from the map definition.
+A way to switch units without setting the 'go back in time' thing.
+Make units die right when they shoot, as opposed to after the animation is over.
+When the enemy units see a corpse, they should investigate.
+When the enemy loses sight of you, it should go to where you were to investigate.
+
+When changing the currently selected unit, make it smarter about it. (skip dead or finished units, make it easier to switch units on the fly.)
+Units shouldn't trigger the 'set spawn' unless they walk into the tile.
+
+A way to change levels.
+
+A parameter for patrol points to have alternate destinations.
+A parameter for patrol points to indicate how long units should search there.
+A parameter for patrol points to indicate what direction(s) units should search in while they are there.
+Random numbers need to be eliminated.
+When you hold space bar, show the radius around you that you can hit in.
+While I'm at it, the swordsman has a silly amount of range...
+
+Make it so that enemies can't attack a target unless they're facing it (so you can sneak up on them)
+		May have to increase turn rate when alerted to make up for this.
+		
+Level Editor		
+	- a "Test Level" button.
+	- Safer saving -- When saving create a temporary file rather than just overwriting the old file.  When save is complete, then erase the old file.
+	- Increase the resolution so that you have a bit more space to do stuff in.  Use the extra space as a HUD
+	- When loading a file that doesn't exist, create the file.
+		
+Traps
+	-Base Implemented
+	-Traps that start on impassable squares should activate right away.
+	- A way to change the tileset in the level editor.
+		-Change representation of tiles in the file.  Use 1-3-2 to mean tileset-tile-variabilityNumber
+	Spear trap (Spears out of a wall damaging all units in its path)
+	Spike Trap (Spikes shoot out of the ground.  If a unit is on the square when it triggers, they take damage)
+	Doors that can be opened with buttons
+	Enemies can currently 'see through' doors.  Update the 'Terrain.CanSeeThrough' to check traps.
+	A way to add parameters to these traps.
+	Secret Door
+	Keys and doors locked with keys.
+		(Items that can be picked up and held.  Each unit can hold one item.)
+Switches
+	Step on it
+	
+Scrolling camera
+
+Support different tilesets
+Support a "Noise" tile.  Basically draw the tile, then add one of that specific tile's random noise options.  The noise should be in the second dimension of the tileset.
+Progress bar on loading level
+
+Make pressure plates in 4th level more obvious
+Reduce cooldown on weapon
+Make cooldown more obvious
+Make it more obvious when spikes are dangerous
+Need a way to re-enter the teleportation circles.
